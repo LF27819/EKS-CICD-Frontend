@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: temperaturas-backend-svc
+  labels:
+    app: temperaturas-backend
+spec:
+  clusterIP: None
+  ports:
+    - port: 5000
+  selector:
+    app: temperaturas-backend
+    tier: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temperaturas-backend
+  labels:
+    app: temperaturas-backend
+spec:
+  selector:
+    matchLabels:
+      app: temperaturas-backend
+      tier: backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: temperaturas-backend
+        tier: backend
+    spec:
+      containers:
+        - name: temperaturas-backend
+          image: lucilu27819/temperaturas-backend:latest
+          ports:
+            - containerPort: 5000
