@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env:
-  EKS_CLUSTER_NAME: cluster_prueba
+  EKS_CLUSTER_NAME: AA-cluster
   AWS_REGION: us-east-1
 
 jobs:
