@@ -64,3 +64,5 @@ jobs:
       - name: Deploy to EKS
         run: |
           kubectl apply -f k8s/frontend.yaml
+          kubectl rollout restart deployment/temperaturas-frontend
+          kubectl rollout status deployment/temperaturas-frontend
